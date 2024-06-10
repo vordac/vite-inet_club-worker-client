@@ -1,0 +1,29 @@
+.item {
+    padding: 16px;
+    margin: 16px;
+    border: 2px solid black;
+}
+
+.item-id button {
+    margin-right: 8px;
+}
+
+.item-controls {
+    display: flex;
+    justify-content: end;
+    float: right;
+}
+
+.item button {
+    padding: 4px 6px;
+    background-color: red;
+    border: 2px solid red;
+    border-radius: 4px;
+    transition: .3s ease all;
+}
+
+.item button:hover {
+    background-color: transparent;
+    transition: .3s ease all;
+    cursor: pointer;
+}

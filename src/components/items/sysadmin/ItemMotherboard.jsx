@@ -1,0 +1,11 @@
+import React, { useEffect, useState } from 'react'
+
+function ItemMotherboard() {
+    return (
+        <div className='item'>
+
+        </div>
+    );
+}
+
+export default ItemMotherboard;

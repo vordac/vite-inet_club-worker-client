@@ -1,0 +1,25 @@
+.aside {
+    border-right: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+}
+
+.aside button {
+    margin: 6px 0;
+    padding: 8px 4px;
+    background-color: #2980b9;
+    color: white;
+    font-weight: bold;
+    border: 2px solid black;
+    transition: .3s ease all;
+}
+
+.aside button:hover {
+    background-color: transparent;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+    transition: .3s ease all;
+    cursor: pointer;
+}

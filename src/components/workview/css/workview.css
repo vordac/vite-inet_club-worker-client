@@ -1,0 +1,32 @@
+.workview {
+    padding: 16px;
+}
+
+.workview-controls input {
+    margin-left: 16px;
+    height: 24px;
+}
+
+.workview-controls input:first-of-type {
+    margin-left: 16px;
+    height: 24px;
+    width: 400px;
+}
+
+.workview-controls button {
+    background-color: #2980b9;
+    color: white;
+    border: 2px solid black;
+    padding: 8px 12px;
+    font-weight: bold;
+    margin: 8px 16px;
+}
+
+.workview-controls button:hover {
+    background-color: transparent;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+    transition: .3s ease all;
+    cursor: pointer;
+}
