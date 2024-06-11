@@ -2,3 +2,41 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
+
+.pc {
+    display: flex;
+    flex-direction: column;
+}
+
+.pc .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.pc .workview-controls {
+    display: flex;
+    flex-direction: column;
+    padding: 0 8px;
+}
+
+.workview-controls-upper {
+    display: flex;
+    align-items: center;
+}
+
+.workview-controls input {
+    border: 2px solid black;
+    padding: 4px;
+}
+
+.pc .workview-controls input {
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pc .workview-controls select {
+    margin: 8px;
+    height: 32px;
+    border: 2px solid black;
+}

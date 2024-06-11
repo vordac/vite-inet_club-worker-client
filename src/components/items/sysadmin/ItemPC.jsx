@@ -7,7 +7,7 @@ import axios from 'axios';
 import './css/item.css';
 
 function ItemPC({ update, setUpdate, pc, getCPUName, getGPUName, getMotherboardName, getRAMName, getHDDName, getSSDName, getCoolingName, getPowerName, getUnitName, getMonitorName, getMouseName, getKeyboardName, getHeadsetName }) {
-    const { id_pc, id_cpu, id_gpu, id_motherboard, id_ram, id_hdd, id_ssd, id_cooling, id_power, id_unit, id_monitor, id_mouse, id_keyboard, id_headset } = pc;
+    const { id_pc, name_pc, id_cpu, id_gpu, id_motherboard, id_ram, id_hdd, id_ssd, id_cooling, id_power, id_unit, id_monitor, id_mouse, id_keyboard, id_headset } = pc;
 
     const handleDeletePC = async () => {
         Swal.fire({
@@ -44,6 +44,7 @@ function ItemPC({ update, setUpdate, pc, getCPUName, getGPUName, getMotherboardN
                 </button>
             </div>
             <Card.Text className='item-id'><b>ID:</b> {id_pc}</Card.Text>
+            <Card.Text className='item-name'><b>Назва:</b> {name_pc}</Card.Text>
             <Card.Text className='item-cpu'><b>Процесор:</b> {getCPUName(id_cpu)}</Card.Text>
             <Card.Text className='item-gpu'><b>Відеокарта:</b> {getGPUName(id_gpu)}</Card.Text>
             <Card.Text className='item-motherboard'><b>Материнська плата:</b> {getMotherboardName(id_motherboard)}</Card.Text>

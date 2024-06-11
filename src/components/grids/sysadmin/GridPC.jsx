@@ -3,10 +3,12 @@ import ItemPC from '../../items/sysadmin/ItemPC';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import './css/grid.css';
-import { icon } from '@fortawesome/fontawesome-svg-core';
+import { icon, text } from '@fortawesome/fontawesome-svg-core';
 
 function GridPC({ update, setUpdate }) {
     const [error, setError] = useState(null);
+    const [pcName, setPcName] = useState('');
+
     const [pcs, setPCs] = useState([]);
     const [cpus, setCPUs] = useState([]);
     const [gpus, setGPUs] = useState([]);
@@ -299,6 +301,7 @@ function GridPC({ update, setUpdate }) {
     const handlePostPC = async () => {
 
         const data = {
+            name_pc: pcName,
             id_cpu: selectedCPU,
             id_gpu: selectedGPU,
             id_motherboard: selectedMotherboard,
@@ -315,6 +318,120 @@ function GridPC({ update, setUpdate }) {
         };
 
         try {
+
+            if (!pcName) {
+                Swal.fire({
+                    icon: 'error',
+                    text: 'Назву не було введено',
+                })
+                return;
+            }
+
+            if (!selectedCPU) {
+                Swal.fire({
+                    icon: 'error',
+                    text: 'Процесор не було обрано',
+                })
+                return;
+            }
+
+            if (!selectedGPU) {
+                Swal.fire({
+                    icon: 'error',
+                    text: 'Відеокарту не було обрано',
+                })
+                return;
+            }
+
+            if (!selectedMotherboard) {
+                Swal.fire({
+                    icon: 'error',
+                    text: 'Материнську плату не було обрано',
+                })
+                return;
+            }
+
+
+            if (!selectedRAM) {
+                Swal.fire({
+                    icon: 'error',
+                    text: "Оперативну пам'ять не було обрано",
+                })
+                return;
+            }
+
+            if (!selectedHDD) {
+                Swal.fire({
+                    icon: 'error',
+                    text: 'Жорсткий диск не було обрано',
+                })
+                return;
+            }
+
+            if (!selectedSSD) {
+                Swal.fire({
+                    icon: 'error',
+                    text: 'SSD не було обрано',
+                })
+                return;
+            }
+
+            if (!selectedCooling) {
+                Swal.fire({
+                    icon: 'error',
+                    text: 'Охолодження не було обрано',
+                })
+                return;
+            }
+
+            if (!selectedPower) {
+                Swal.fire({
+                    icon: 'error',
+                    text: 'Блок живлення не було обрано',
+                })
+                return;
+            }
+
+            if (!selectedUnit) {
+                Swal.fire({
+                    icon: 'error',
+                    text: 'Корпус не було обрано',
+                })
+                return;
+            }
+
+            if (!selectedMonitor) {
+                Swal.fire({
+                    icon: 'error',
+                    text: 'Монітор не було обрано',
+                })
+                return;
+            }
+
+            if (!selectedMouse) {
+                Swal.fire({
+                    icon: 'error',
+                    text: 'Мишу не було обрано',
+                })
+                return;
+            }
+
+            if (!selectedKeyboard) {
+                Swal.fire({
+                    icon: 'error',
+                    text: 'Клавіатуру не було обрано',
+                })
+                return;
+            }
+
+            if (!selectedHeadset) {
+                Swal.fire({
+                    icon: 'error',
+                    text: 'Навушники не було обрано',
+                })
+                return;
+            }
+
             const response = await axios.post('http://localhost:5001/post-pc', data);
             setUpdate(update += 1);
         } catch (error) {
@@ -348,103 +465,108 @@ function GridPC({ update, setUpdate }) {
     return (
         <div className='pc'>
             <div className='workview-controls'>
+                <div className='workview-controls-upper'>
+                    <input placeholder="Назва ПК" value={pcName} onChange={(e) => setPcName(e.target.value)} />
+                    <button onClick={handlePostPC}>Додати</button>
+                </div>
                 <select value={selectedCPU} onChange={(e) => setSelectedCPU(e.target.value)}>
-                    <option value="">Select a CPU</option>
+                    <option value="">Процесор</option>
                     {cpus.map((cpu) => (
                         <option key={cpu.id_cpu} value={cpu.id_cpu}>{cpu.name_cpu}</option>
                     ))}
                 </select>
 
                 <select value={selectedGPU} onChange={(e) => setSelectedGPU(e.target.value)}>
-                    <option value="">Select a GPU</option>
+                    <option value="">Відеокарта</option>
                     {gpus.map((gpu) => (
                         <option key={gpu.id_gpu} value={gpu.id_gpu}>{gpu.name_gpu}</option>
                     ))}
                 </select>
 
                 <select value={selectedMotherboard} onChange={(e) => setSelectedMotherboard(e.target.value)}>
-                    <option value="">Select a motherboard</option>
+                    <option value="">Материнська плата</option>
                     {motherboards.map((motherboard) => (
                         <option key={motherboard.id_motherboard} value={motherboard.id_motherboard}>{motherboard.name_motherboard}</option>
                     ))}
                 </select>
 
                 <select value={selectedRAM} onChange={(e) => setSelectedRAM(e.target.value)}>
-                    <option value="">Select a RAM</option>
+                    <option value="">Оперативна пам'ять</option>
                     {rams.map((ram) => (
                         <option key={ram.id_ram} value={ram.id_ram}>{ram.name_ram}</option>
                     ))}
                 </select>
 
                 <select value={selectedHDD} onChange={(e) => setSelectedHDD(e.target.value)}>
-                    <option value="">Select a HDD</option>
+                    <option value="">Жорсткий диск</option>
                     {hdds.map((hdd) => (
                         <option key={hdd.id_hdd} value={hdd.id_hdd}>{hdd.name_hdd}</option>
                     ))}
                 </select>
 
                 <select value={selectedSSD} onChange={(e) => setSelectedSSD(e.target.value)}>
-                    <option value="">Select a SSD</option>
+                    <option value="">SSD</option>
                     {ssds.map((ssd) => (
                         <option key={ssd.id_ssd} value={ssd.id_ssd}>{ssd.name_ssd}</option>
                     ))}
                 </select>
 
                 <select value={selectedCooling} onChange={(e) => setSelectedCooling(e.target.value)}>
-                    <option value="">Select a cooling</option>
+                    <option value="">Охолодження</option>
                     {coolings.map((cooling) => (
                         <option key={cooling.id_cooling} value={cooling.id_cooling}>{cooling.name_cooling}</option>
                     ))}
                 </select>
 
                 <select value={selectedPower} onChange={(e) => setSelectedPower(e.target.value)}>
-                    <option value="">Select a power</option>
+                    <option value="">Блок живлення</option>
                     {powers.map((power) => (
                         <option key={power.id_power} value={power.id_power}>{power.name_power}</option>
                     ))}
                 </select>
 
                 <select value={selectedUnit} onChange={(e) => setSelectedUnit(e.target.value)}>
-                    <option value="">Select a unit</option>
+                    <option value="">Корпус</option>
                     {units.map((unit) => (
                         <option key={unit.id_unit} value={unit.id_unit}>{unit.name_unit}</option>
                     ))}
                 </select>
 
                 <select value={selectedMonitor} onChange={(e) => setSelectedMonitor(e.target.value)}>
-                    <option value="">Select a monitor</option>
+                    <option value="">Монітор</option>
                     {monitors.map((monitor) => (
                         <option key={monitor.id_monitor} value={monitor.id_monitor}>{monitor.name_monitor}</option>
                     ))}
                 </select>
 
                 <select value={selectedMouse} onChange={(e) => setSelectedMouse(e.target.value)}>
-                    <option value="">Select a mouse</option>
+                    <option value="">Миша</option>
                     {mouses.map((mouse) => (
                         <option key={mouse.id_mouse} value={mouse.id_mouse}>{mouse.name_mouse}</option>
                     ))}
                 </select>
 
                 <select value={selectedKeyboard} onChange={(e) => setSelectedKeyboard(e.target.value)}>
-                    <option value="">Select a keyboard</option>
+                    <option value="">Клавіатура</option>
                     {keyboards.map((keyboard) => (
                         <option key={keyboard.id_keyboard} value={keyboard.id_keyboard}>{keyboard.name_keyboard}</option>
                     ))}
                 </select>
 
                 <select value={selectedHeadset} onChange={(e) => setSelectedHeadset(e.target.value)}>
-                    <option value="">Select a headset</option>
+                    <option value="">Навушники</option>
                     {headsets.map((headset) => (
                         <option key={headset.id_headset} value={headset.id_headset}>{headset.name_headset}</option>
                     ))}
                 </select>
-                <button onClick={handlePostPC}>Додати</button>
             </div>
             <div className='grid'>
                 {pcs && pcs.map((pc) => (
                     <ItemPC
                         key={pc.id_pc}
                         pc={pc}
+                        update={update}
+                        setUpdate={setUpdate}
                         getCPUName={getCPUName}
                         getGPUName={getGPUName}
                         getMotherboardName={getMotherboardName}
