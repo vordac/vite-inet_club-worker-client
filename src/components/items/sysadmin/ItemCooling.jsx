@@ -43,8 +43,8 @@ function ItemCooling({ update, setUpdate, cooling }) {
                     <FontAwesomeIcon icon={faRemove} />
                 </button>
             </div>
-            <Card.Text className='item-name'><b>Назва: </b>{name_cooling}</Card.Text>
             <Card.Text className='item-id'><b>ID:</b> {id_cooling}</Card.Text>
+            <Card.Text className='item-name'><b>Назва: </b>{name_cooling}</Card.Text>
             <Card.Text className='item-quantity'><b>Кількість:</b> {quantity_cooling}</Card.Text>
 
         </Card>

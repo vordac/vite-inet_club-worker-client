@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../css/workview.css';
 
-import GridComputer from '../../grids/sysadmin/GridComputer';
+import GridPC from '../../grids/sysadmin/GridPC';
 import GridConsole from '../../grids/sysadmin/GridConsole';
 import GridCooling from '../../grids/sysadmin/GridCooling';
 import GridCPU from '../../grids/sysadmin/GridCPU';
@@ -33,88 +33,64 @@ function Workview({ role, tab, update, setUpdate }) {
         if (tab === 1) {
             return (
                 <div className='workview'>
-                    <div className='workview-controls'>
-                        <button>1</button>
-                    </div>
                     <div className='workview-content'>
-                        <GridComputer />
+                        <GridPC update={update} setUpdate={setUpdate} />
                     </div>
                 </div>
             )
         } else if (tab === 2) {
             return (
                 <div className='workview'>
-                    <div className='workview-controls'>
-                        <button>2</button>
-                    </div>
                     <div className='workview-content'>
-                        <GridConsole />
+                        <GridConsole update={update} setUpdate={setUpdate} />
                     </div>
                 </div>
             )
         } else if (tab === 3) {
             return (
                 <div className='workview'>
-                    <div className='workview-controls'>
-                        <button>3</button>
-                    </div>
                     <div className='workview-content'>
-                        <GridCPU />
+                        <GridCPU update={update} setUpdate={setUpdate} />
                     </div>
                 </div>
             )
         } else if (tab === 4) {
             return (
                 <div className='workview'>
-                    <div className='workview-controls'>
-                        <button>4</button>
-                    </div>
                     <div className='workview-content'>
-                        <GridGPU />
+                        <GridGPU update={update} setUpdate={setUpdate} />
                     </div>
                 </div>
             )
         } else if (tab === 5) {
             return (
                 <div className='workview'>
-                    <div className='workview-controls'>
-                        <button>5</button>
-                    </div>
                     <div className='workview-content'>
-                        <GridMotherboard />
+                        <GridMotherboard update={update} setUpdate={setUpdate} />
                     </div>
                 </div>
             )
         } else if (tab === 6) {
             return (
                 <div className='workview'>
-                    <div className='workview-controls'>
-                        <button>6</button>
-                    </div>
                     <div className='workview-content'>
-                        <GridRAM />
+                        <GridRAM update={update} setUpdate={setUpdate} />
                     </div>
                 </div>
             )
         } else if (tab === 7) {
             return (
                 <div className='workview'>
-                    <div className='workview-controls'>
-                        <button>7</button>
-                    </div>
                     <div className='workview-content'>
-                        <GridHDD />
+                        <GridHDD update={update} setUpdate={setUpdate} />
                     </div>
                 </div>
             )
         } else if (tab === 8) {
             return (
                 <div className='workview'>
-                    <div className='workview-controls'>
-                        <button>8</button>
-                    </div>
                     <div className='workview-content'>
-                        <GridSSD />
+                        <GridSSD update={update} setUpdate={setUpdate} />
                     </div>
                 </div>
             )
@@ -127,42 +103,30 @@ function Workview({ role, tab, update, setUpdate }) {
         } else if (tab === 10) {
             return (
                 <div className='workview'>
-                    <div className='workview-controls'>
-                        <button>10</button>
-                    </div>
                     <div className='workview-content'>
-                        <GridPower />
+                        <GridPower update={update} setUpdate={setUpdate} />
                     </div>
                 </div>
             )
         } else if (tab === 11) {
             return (
                 <div className='workview'>
-                    <div className='workview-controls'>
-                        <button>11</button>
-                    </div>
                     <div className='workview-content'>
-                        <GridUnit />
+                        <GridUnit update={update} setUpdate={setUpdate} />
                     </div>
                 </div>
             )
         } else if (tab === 12) {
             return (
                 <div className='workview'>
-                    <div className='workview-controls'>
-                        <button>12</button>
-                    </div>
                     <div className='workview-content'>
-                        <GridMonitor />
+                        <GridMonitor update={update} setUpdate={setUpdate} />
                     </div>
                 </div>
             )
         } else if (tab === 13) {
             return (
                 <div className='workview'>
-                    <div className='workview-controls'>
-                        <button>13</button>
-                    </div>
                     <div className='workview-content'>
                         <GridMouse />
                     </div>
@@ -171,22 +135,16 @@ function Workview({ role, tab, update, setUpdate }) {
         } else if (tab === 14) {
             return (
                 <div className='workview'>
-                    <div className='workview-controls'>
-                        <button>14</button>
-                    </div>
                     <div className='workview-content'>
-                        <GridKeyboard />
+                        <GridKeyboard update={update} setUpdate={setUpdate} />
                     </div>
                 </div>
             )
         } else if (tab === 15) {
             return (
                 <div className='workview'>
-                    <div className='workview-controls'>
-                        <button>15</button>
-                    </div>
                     <div className='workview-content'>
-                        <GridHeadset />
+                        <GridHeadset update={update} setUpdate={setUpdate} />
                     </div>
                 </div>
             )

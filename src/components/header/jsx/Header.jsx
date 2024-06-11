@@ -31,7 +31,7 @@ function Header({ role, sidebarVisible, setSidebarVisible }) {
         return (
             <div className='header'>
                 <div className='header-burger'>
-                    <p>Системний Адміністратор</p>
+                    <p>Сисадмін</p>
                 </div>
                 <div className='header-logout'>
                     <button onClick={handleLogout}>Вийти</button>

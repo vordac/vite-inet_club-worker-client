@@ -56,11 +56,11 @@ function GridCooling({ update, setUpdate }) {
     }, []);
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return <div>Помилка: {error}</div>;
     }
 
     if (!coolings) {
-        return <div>Loading...</div>;
+        return <div>Завантаження...</div>;
     }
 
     return (
