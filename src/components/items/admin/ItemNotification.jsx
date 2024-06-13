@@ -7,7 +7,7 @@ import axios from 'axios';
 import './css/item.css';
 
 function ItemNotification({ update, setUpdate, notification }) {
-    const { id_notification, phone, date } = notification;
+    const { id_notification, phone, date, status } = notification;
 
     const dateObject = new Date(date);
 
@@ -47,18 +47,61 @@ function ItemNotification({ update, setUpdate, notification }) {
         })
     }
 
-    return (
-        <Card className="item">
-            <div className='item-controls'>
-                <button onClick={handleDeleteNotification}>
-                    <FontAwesomeIcon icon={faRemove} />
-                </button>
-            </div>
-            <Card.Text className='item-id'><b>ID:</b> {id_notification}</Card.Text>
-            <Card.Text className='item-name'><b>Номер: </b>{phone}</Card.Text>
-            <Card.Text className='item-quantity'><b>Дата:</b> {formattedDate}</Card.Text>
-        </Card>
-    );
+    const handleNewClick = async () => {
+        try {
+            const response = await axios.put(`http://localhost:5001/put-notification/Нове/${id_notification}`, {
+                status_new: "Нове",
+                id_notification: id_notification
+            });
+            setUpdate(update += 1);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const handleArchiveClick = async () => {
+        try {
+            const response = await axios.put(`http://localhost:5001/put-notification/Архів/${id_notification}`, {
+                status_new: "Архів",
+                id_notification: id_notification
+            });
+            setUpdate(update += 1);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    if (status === "Нове") {
+        return (
+            <Card className="item">
+                <div className='item-controls'>
+                    <button onClick={handleDeleteNotification}>
+                        <FontAwesomeIcon icon={faRemove} />
+                    </button>
+                </div>
+                <Card.Text className='item-id'><b>ID:</b> {id_notification}</Card.Text>
+                <Card.Text className='item-number'><b>Номер: </b>{phone}</Card.Text>
+                <Card.Text className='item-date'><b>Дата:</b> {formattedDate}</Card.Text>
+                <Card.Text className='item-status'><b>Статус:</b> {status}</Card.Text>
+                <button onClick={handleArchiveClick}>Архівувати</button>
+            </Card>
+        );
+    } else {
+        return (
+            <Card className="item">
+                <div className='item-controls'>
+                    <button onClick={handleDeleteNotification}>
+                        <FontAwesomeIcon icon={faRemove} />
+                    </button>
+                </div>
+                <Card.Text className='item-id'><b>ID:</b> {id_notification}</Card.Text>
+                <Card.Text className='item-number'><b>Номер: </b>{phone}</Card.Text>
+                <Card.Text className='item-date'><b>Дата:</b> {formattedDate}</Card.Text>
+                <Card.Text className='item-status'><b>Статус:</b> {status}</Card.Text>
+                <button onClick={handleNewClick}>Змінити на "Нове"</button>
+            </Card>
+        );
+    }
 }
 
 export default ItemNotification;
