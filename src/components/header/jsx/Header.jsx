@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 
-function Header({ role, sidebarVisible, setSidebarVisible }) {
+function Header({ role, setRole, sidebarVisible, setSidebarVisible }) {
 
 
     const handleLogout = () => {
@@ -21,10 +21,10 @@ function Header({ role, sidebarVisible, setSidebarVisible }) {
                 <div className='header-burger'>
                     <p>Директор</p>
                 </div>
-                <div className='header-logout'>
-                    <button onClick={handleLogout}>Вийти</button>
-                </div>
-
+                <select onChange={(e) => setRole(e.target.value)}>
+                    <option value="admin">Адміністратор</option>
+                    <option value="sysadmin">Системний адміністратор</option>
+                </select>
             </div>
         )
     } else if (role === "sysadmin") {
@@ -33,9 +33,10 @@ function Header({ role, sidebarVisible, setSidebarVisible }) {
                 <div className='header-burger'>
                     <p>Сисадмін</p>
                 </div>
-                <div className='header-logout'>
-                    <button onClick={handleLogout}>Вийти</button>
-                </div>
+                <select onChange={(e) => setRole(e.target.value)}>
+                    <option value="sysadmin">Системний адміністратор</option>
+                    <option value="admin">Адміністратор</option>
+                </select>
             </div>
         )
     } else if (role === "admin") {
@@ -44,9 +45,10 @@ function Header({ role, sidebarVisible, setSidebarVisible }) {
                 <div className='header-burger'>
                     <p>Адміністратор</p>
                 </div>
-                <div className='header-logout'>
-                    <button onClick={handleLogout}>Вийти</button>
-                </div>
+                <select onChange={(e) => setRole(e.target.value)}>
+                    <option value="admin">Адміністратор</option>
+                    <option value="sysadmin">Системний адміністратор</option>
+                </select>
             </div>
         )
     } else {

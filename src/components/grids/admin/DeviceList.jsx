@@ -9,7 +9,7 @@ function DeviceList({ update, setUpdate }) {
     const [error, setError] = useState(null);
     const [devices, setDevices] = useState(null);
     const [name_device, setNameDevice] = useState('');
-    const [type_device, setModelDevice] = useState('');
+    const [type_device, setTypeDevice] = useState('');
 
     const handlePostDevice = async () => {
 
@@ -21,7 +21,7 @@ function DeviceList({ update, setUpdate }) {
             return;
         }
 
-        if (!model_device) {
+        if (!type_device) {
             Swal.fire({
                 icon: 'error',
                 text: 'Модель відсутня',
@@ -29,23 +29,14 @@ function DeviceList({ update, setUpdate }) {
             return;
         }
 
-        if (quantity_device < 1) {
-            Swal.fire({
-                icon: 'error',
-                text: 'Кількість не може бути < 1',
-            })
-            return;
-        }
-
         try {
             const response = await axios.post('http://localhost:5001/post-device', {
                 name_device: name_device,
-                model_device: model_device,
-                quantity_device: quantity_device
+                type_device: type_device,
             });
             setUpdate(update += 1);
         } catch (error) {
-            device.error('Error posting device:', error);
+            devices.error('Error posting device:', error);
             setError('Error posting device');
         }
     };
@@ -75,7 +66,11 @@ function DeviceList({ update, setUpdate }) {
     return (
         <div className='device'>
             <div className='workview-controls'>
-                <input placeholder='Тип пристрою' value={type_device} onChange={(e) => setModelDevice(e.target.value)} />
+                <select value={type_device} onChange={(e) => setTypeDevice(e.target.value)}>
+                    <option value="">Тип пристрою</option>
+                    <option value="Console">Console</option>
+                    <option value="PC">PC</option>
+                </select>
                 <input placeholder='Назва пристрою' value={name_device} onChange={(e) => setNameDevice(e.target.value)} />
                 <button onClick={handlePostDevice}>Додати</button>
             </div>

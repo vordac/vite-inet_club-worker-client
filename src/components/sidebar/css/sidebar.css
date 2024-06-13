@@ -1,6 +1,5 @@
 .aside {
     width: 240px;
-    border-right: 2px solid black;
     display: flex;
     flex-direction: column;
     padding: 16px;

@@ -24,7 +24,7 @@ function App() {
     if (role === "director") {
       return (
         <>
-          <Header role={role} />
+          <Header role={role} setRole={setRole} />
           <div className='container'>
             <Sidebar role={role} tab={tab} setTab={setTab} />
             <Workview role={role} tab={tab} update={update} setUpdate={setUpdate} />
@@ -34,7 +34,7 @@ function App() {
     } else if (role === "sysadmin") {
       return (
         <>
-          <Header role={role} />
+          <Header role={role} setRole={setRole} />
           <div className='container'>
             <Sidebar role={role} tab={tab} setTab={setTab} />
             <Workview role={role} tab={tab} update={update} setUpdate={setUpdate} />
@@ -44,7 +44,7 @@ function App() {
     } else if (role === "admin") {
       return (
         <>
-          <Header role={role} />
+          <Header role={role} setRole={setRole} />
           <div className='container'>
             <Sidebar role={role} tab={tab} setTab={setTab} />
             <Workview role={role} tab={tab} update={update} setUpdate={setUpdate} />
