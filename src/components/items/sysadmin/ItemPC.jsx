@@ -43,21 +43,22 @@ function ItemPC({ update, setUpdate, pc, getCPUName, getGPUName, getMotherboardN
                     <FontAwesomeIcon icon={faRemove} />
                 </button>
             </div>
-            <Card.Text className='item-id'><b>ID:</b> {id_pc}</Card.Text>
-            <Card.Text className='item-name'><b>Назва:</b> {name_pc}</Card.Text>
-            <Card.Text className='item-cpu'><b>Процесор:</b> {getCPUName(id_cpu)}</Card.Text>
-            <Card.Text className='item-gpu'><b>Відеокарта:</b> {getGPUName(id_gpu)}</Card.Text>
-            <Card.Text className='item-motherboard'><b>Материнська плата:</b> {getMotherboardName(id_motherboard)}</Card.Text>
-            <Card.Text className='item-ram'><b>Оперативна пам'ять:</b> {getRAMName(id_ram)}</Card.Text>
-            <Card.Text className='item-hdd'><b>Жорсткий диск:</b> {getHDDName(id_hdd)}</Card.Text>
-            <Card.Text className='item-ssd'><b>SSD:</b> {getSSDName(id_ssd)}</Card.Text>
-            <Card.Text className='item-cooling'><b>Охолодження:</b> {getCoolingName(id_cooling)}</Card.Text>
-            <Card.Text className='item-power'><b>Блок живлення:</b> {getPowerName(id_power)}</Card.Text>
-            <Card.Text className='item-unit'><b>Корпус:</b> {getUnitName(id_unit)}</Card.Text>
-            <Card.Text className='item-monitor'><b>Монітор:</b> {getMonitorName(id_monitor)}</Card.Text>
-            <Card.Text className='item-mouse'><b>Миша:</b> {getMouseName(id_mouse)}</Card.Text>
-            <Card.Text className='item-keyboard'><b>Клавіатура:</b> {getKeyboardName(id_keyboard)}</Card.Text>
-            <Card.Text className='item-headset'><b>Навушники:</b> {getHeadsetName(id_headset)}</Card.Text>
+            <div className='pc'>
+                <Card.Text className='item-name'><b>{name_pc}</b></Card.Text>
+                <Card.Text className='item-cpu'><b>Процесор:</b> {getCPUName(id_cpu)}</Card.Text>
+                <Card.Text className='item-gpu'><b>Відеокарта:</b> {getGPUName(id_gpu)}</Card.Text>
+                <Card.Text className='item-motherboard'><b>Материнська плата:</b> {getMotherboardName(id_motherboard)}</Card.Text>
+                <Card.Text className='item-ram'><b>Оперативна пам'ять:</b> {getRAMName(id_ram)}</Card.Text>
+                <Card.Text className='item-hdd'><b>Жорсткий диск:</b> {getHDDName(id_hdd)}</Card.Text>
+                <Card.Text className='item-ssd'><b>SSD:</b> {getSSDName(id_ssd)}</Card.Text>
+                <Card.Text className='item-cooling'><b>Охолодження:</b> {getCoolingName(id_cooling)}</Card.Text>
+                <Card.Text className='item-power'><b>Блок живлення:</b> {getPowerName(id_power)}</Card.Text>
+                <Card.Text className='item-unit'><b>Корпус:</b> {getUnitName(id_unit)}</Card.Text>
+                <Card.Text className='item-monitor'><b>Монітор:</b> {getMonitorName(id_monitor)}</Card.Text>
+                <Card.Text className='item-mouse'><b>Миша:</b> {getMouseName(id_mouse)}</Card.Text>
+                <Card.Text className='item-keyboard'><b>Клавіатура:</b> {getKeyboardName(id_keyboard)}</Card.Text>
+                <Card.Text className='item-headset'><b>Навушники:</b> {getHeadsetName(id_headset)}</Card.Text>
+            </div>
         </Card>
     );
 }

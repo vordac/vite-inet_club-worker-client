@@ -15,7 +15,7 @@
 
 .header button {
     color: white;
-    border: none;
+    border: 2px solid black;
     color: black;
     padding: 8px;
     font-weight: bold;

@@ -2,12 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css'
 
-// Admin
-
-// Director
-
-// SystemAdmin
-
 // Components
 
 import Sidebar from './components/sidebar/jsx/Sidebar';
@@ -17,7 +11,7 @@ import Workview from './components/workview/jsx/Workview';
 
 function App() {
 
-  const [role, setRole] = useState("sysadmin");
+  const [role, setRole] = useState("admin");
   const [tab, setTab] = useState(1);
   const [update, setUpdate] = useState(1);
 

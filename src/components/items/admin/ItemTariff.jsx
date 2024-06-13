@@ -6,10 +6,10 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import './css/item.css';
 
-function ItemConsole({ update, setUpdate, console }) {
-    const { id_console, name_console, model_console, quantity_console } = console;
+function ItemTariff({ update, setUpdate, tariff }) {
+    const { id_tariff, name_tariff, price_tariff } = tariff;
 
-    const handleDeleteConsole = async () => {
+    const handleDeleteTariff = async () => {
         Swal.fire({
             title: 'Підтвердіть видалення',
             text: 'Ви не зможете повернути запис',
@@ -21,10 +21,10 @@ function ItemConsole({ update, setUpdate, console }) {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = await axios.delete(`http://localhost:5001/delete-console/${id_console}`);
+                    const response = await axios.delete(`http://localhost:5001/delete-tariff/${id_tariff}`);
                 } catch (error) {
-                    console.error('Error deleting console:', error);
-                    setError('Error deleting console');
+                    console.error('Error deleting Tariff:', error);
+                    setError('Error deleting Tariff');
                 }
                 Swal.fire({
                     icon: 'success',
@@ -39,16 +39,15 @@ function ItemConsole({ update, setUpdate, console }) {
     return (
         <Card className="item">
             <div className='item-controls'>
-                <button onClick={handleDeleteConsole}>
+                <button onClick={handleDeleteTariff}>
                     <FontAwesomeIcon icon={faRemove} />
                 </button>
             </div>
-            <Card.Text className='item-id'><b>ID:</b> {id_console}</Card.Text>
-            <Card.Text className='item-name'><b>Назва: </b>{name_console}</Card.Text>
-            <Card.Text className='item-name'><b>Модель: </b>{model_console}</Card.Text>
-            <Card.Text className='item-quantity'><b>Кількість: </b> {quantity_console}</Card.Text>
+            <Card.Text className='item-id'><b>ID:</b> {id_tariff}</Card.Text>
+            <Card.Text className='item-name'><b>Назва: </b>{name_tariff}</Card.Text>
+            <Card.Text className='item-quantity'><b>Ціна:</b> {price_tariff}</Card.Text>
         </Card>
     );
 }
 
-export default ItemConsole;
+export default ItemTariff;

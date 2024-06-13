@@ -6,10 +6,21 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import './css/item.css';
 
-function ItemConsole({ update, setUpdate, console }) {
-    const { id_console, name_console, model_console, quantity_console } = console;
+function ItemNotification({ update, setUpdate, notification }) {
+    const { id_notification, phone, date } = notification;
 
-    const handleDeleteConsole = async () => {
+    const dateObject = new Date(date);
+
+    const formattedDate = dateObject.toLocaleString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    });
+
+    const handleDeleteNotification = async () => {
         Swal.fire({
             title: 'Підтвердіть видалення',
             text: 'Ви не зможете повернути запис',
@@ -21,10 +32,10 @@ function ItemConsole({ update, setUpdate, console }) {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = await axios.delete(`http://localhost:5001/delete-console/${id_console}`);
+                    const response = await axios.delete(`http://localhost:5001/delete-notification/${id_notification}`);
                 } catch (error) {
-                    console.error('Error deleting console:', error);
-                    setError('Error deleting console');
+                    console.error('Error deleting Notification:', error);
+                    setError('Error deleting Notification');
                 }
                 Swal.fire({
                     icon: 'success',
@@ -39,16 +50,15 @@ function ItemConsole({ update, setUpdate, console }) {
     return (
         <Card className="item">
             <div className='item-controls'>
-                <button onClick={handleDeleteConsole}>
+                <button onClick={handleDeleteNotification}>
                     <FontAwesomeIcon icon={faRemove} />
                 </button>
             </div>
-            <Card.Text className='item-id'><b>ID:</b> {id_console}</Card.Text>
-            <Card.Text className='item-name'><b>Назва: </b>{name_console}</Card.Text>
-            <Card.Text className='item-name'><b>Модель: </b>{model_console}</Card.Text>
-            <Card.Text className='item-quantity'><b>Кількість: </b> {quantity_console}</Card.Text>
+            <Card.Text className='item-id'><b>ID:</b> {id_notification}</Card.Text>
+            <Card.Text className='item-name'><b>Номер: </b>{phone}</Card.Text>
+            <Card.Text className='item-quantity'><b>Дата:</b> {formattedDate}</Card.Text>
         </Card>
     );
 }
 
-export default ItemConsole;
+export default ItemNotification;

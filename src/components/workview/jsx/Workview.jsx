@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import '../css/workview.css';
 
+// ADMIN
+import DeviceList from '../../grids/admin/DeviceList';
+import NotificationList from '../../grids/admin/NotificationList';
+import ReservationList from '../../grids/admin/ReservationList';
+import SeatList from '../../grids/admin/SeatList';
+import TariffList from '../../grids/admin/TariffList';
+
+
+// SYSADMIN
 import GridPC from '../../grids/sysadmin/GridPC';
 import GridConsole from '../../grids/sysadmin/GridConsole';
 import GridCooling from '../../grids/sysadmin/GridCooling';
@@ -150,11 +159,47 @@ function Workview({ role, tab, update, setUpdate }) {
             )
         }
     } else if (role === "admin") {
-        return (
-            <div className='workview'>
-                <div className='workview-content'>{role}</div>
-            </div>
-        )
+        if (tab === 1) {
+            return (
+                <div className='workview'>
+                    <div className='workview-content'>
+                        <NotificationList update={update} setUpdate={setUpdate} />
+                    </div>
+                </div>
+            )
+        } else if (tab === 2) {
+            return (
+                <div className='workview'>
+                    <div className='workview-content'>
+                        <ReservationList update={update} setUpdate={setUpdate} />
+                    </div>
+                </div>
+            )
+        } else if (tab === 3) {
+            return (
+                <div className='workview'>
+                    <div className='workview-content'>
+                        <SeatList update={update} setUpdate={setUpdate} />
+                    </div>
+                </div>
+            )
+        } else if (tab === 4) {
+            return (
+                <div className='workview'>
+                    <div className='workview-content'>
+                        <TariffList update={update} setUpdate={setUpdate} />
+                    </div>
+                </div>
+            )
+        } else if (tab === 5) {
+            return (
+                <div className='workview'>
+                    <div className='workview-content'>
+                        <DeviceList update={update} setUpdate={setUpdate} />
+                    </div>
+                </div>
+            )
+        }
     } else {
         return (
             <div className='workview'>
